@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
-// bağırsak
-//selamlar
-//burası yorum satırı
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -20,7 +18,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//sdfghö
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
