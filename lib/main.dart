@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
-
+// bağırsak
 //selamlar
 //burası yorum satırı
 class MyApp extends StatelessWidget {
