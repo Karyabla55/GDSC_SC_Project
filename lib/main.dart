@@ -4,6 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
+//burası yorum satırı
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
