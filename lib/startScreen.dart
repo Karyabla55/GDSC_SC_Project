@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'LoginScreen.dart';
 import 'RegisterScreen.dart';
 
-void main() {
-  runApp(MyApp());
+void Start() {
+  runApp(StartScreen());
 }
 
-class MyApp extends StatelessWidget {
+class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,12 +28,12 @@ class LoginPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/anamenü.png'), // ana.jpg dosyanızın yolunu ekleyin
+            image: AssetImage(
+                'assets/anamenü.png'), // ana.jpg dosyanızın yolunu ekleyin
             fit: BoxFit.cover,
-
           ),
         ),
-        width: 410,// Özel genişlik
+        width: 410, // Özel genişlik
         height: 600, // Özel yükseklik
         child: Center(
           child: Column(
