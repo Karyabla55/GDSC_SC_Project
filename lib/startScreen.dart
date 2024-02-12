@@ -15,9 +15,12 @@ class StartScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class LoginPage extends StatelessWidget {
   var rs = RegistrationScreen();
   var ls = LoginScreen();
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {

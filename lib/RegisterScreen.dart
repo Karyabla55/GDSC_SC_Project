@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class RegistrationScreen extends StatelessWidget {
   var mm = MainMenu();
   final TextEditingController _usernameController = TextEditingController();
@@ -57,7 +58,7 @@ class RegistrationScreen extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextField(
                 controller: _passwordController,
                 decoration: const InputDecoration(

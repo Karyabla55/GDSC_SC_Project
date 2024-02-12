@@ -1,6 +1,7 @@
 import 'package:GDSC_SC_Project/mainmenu.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   var mm = MainMenu();
   LoginScreen({Key? key}) : super(key: key);
