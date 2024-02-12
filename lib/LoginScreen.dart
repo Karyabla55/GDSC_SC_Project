@@ -1,7 +1,9 @@
+import 'package:GDSC_SC_Project/mainmenu.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  var mm = MainMenu();
+  LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,6 @@ class LoginScreen extends StatelessWidget {
                 labelText: 'Kullanıcı Adı',
               ),
             ),
-
             const TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -27,7 +28,12 @@ class LoginScreen extends StatelessWidget {
               obscureText: true,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => mm),
+                );
+              },
               child: const Text('Giriş'),
             ),
           ],

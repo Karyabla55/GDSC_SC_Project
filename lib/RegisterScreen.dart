@@ -1,3 +1,4 @@
+import 'package:GDSC_SC_Project/mainmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
     // Status bar rengini ayarla
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.blue, // Sistem çubuğunun arkaplan rengi
-      statusBarIconBrightness: Brightness.light, // Ikon rengi (siyah veya beyaz)
+      statusBarIconBrightness:
+          Brightness.light, // Ikon rengi (siyah veya beyaz)
     ));
 
     return MaterialApp(
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class RegistrationScreen extends StatelessWidget {
+  var mm = MainMenu();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -75,9 +78,15 @@ class RegistrationScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => mm),
+                  );
+                },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white30),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white30),
                   shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),

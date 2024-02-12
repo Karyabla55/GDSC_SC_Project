@@ -33,8 +33,10 @@ class LoginPage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        /*
         width: 410, // Özel genişlik
         height: 600, // Özel yükseklik
+        */
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -48,6 +50,7 @@ class LoginPage extends StatelessWidget {
                 },
                 child: Text(' Kayıt Ol '),
               ),
+              SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(

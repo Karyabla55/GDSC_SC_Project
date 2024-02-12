@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MainMenu());
 }
 
-class MyApp extends StatelessWidget {
+class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,13 +43,11 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: Text('Profil'),
               onTap: () {
-
                 // Profil'e tıklandığında yapılacak işlemler
                 print('Profil seçildi.');
                 Navigator.pop(context);
               },
             ),
-
             ListTile(
               title: Text('Diyet'),
               onTap: () {
@@ -68,7 +66,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/resimler/pexels-photo-10742586.webp"),
+            image: AssetImage("assets/resimler/BackgroundMainMenu.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -85,6 +83,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 class DiyetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
