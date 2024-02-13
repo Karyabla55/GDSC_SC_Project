@@ -13,11 +13,11 @@ class _InfoPageState extends State<InfoPage> {
   TextEditingController heightController = TextEditingController();
 
   Map<String, dynamic> userData = {
-    'name': '',
-    'age': 0,
-    'weight': 0.0,
-    'height': 0.0,
-    'gender': '', // Cinsiyet bilgisini ekledik
+    'isim': '',
+    'yas': 0,
+    'kilo': 0.0,
+    'boy': 0.0,
+    'cinsiyet': '',
   };
 
   double bmr = 0.0;
@@ -69,18 +69,18 @@ class _InfoPageState extends State<InfoPage> {
                     ),
                   ],
                 ),
-                _buildInputField("İsim", nameController),
-                _buildInputField("Yaş", ageController),
-                _buildInputField("Kilo", weightController),
-                _buildInputField("Boy", heightController),
-                _buildGenderField(), // Cinsiyet gösterilecek alan
+                _buildInputField("isim", nameController),
+                _buildInputField("yas", ageController),
+                _buildInputField("kilo", weightController),
+                _buildInputField("boy", heightController),
+                _buildGenderField(),
+                _buildInfoField("BMR", bmr.toString()),
                 ElevatedButton(
                   onPressed: () {
                     saveAndCalculateBMR();
                   },
                   child: Text('Kaydet'),
                 ),
-                _buildInfoField("BMR", bmr.toString()),
               ],
             ),
           ),
@@ -139,7 +139,7 @@ class _InfoPageState extends State<InfoPage> {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: InkWell(
         onTap: () {
-          _showGenderSelection(); // Cinsiyet seçimi popup'ını göster
+          _showGenderSelection();
         },
         child: Container(
           padding: EdgeInsets.all(8),
@@ -158,9 +158,9 @@ class _InfoPageState extends State<InfoPage> {
                 ),
               ),
               Text(
-                userData['gender'].isEmpty
+                userData['cinsiyet'].isEmpty
                     ? 'Belirtilmemiş'
-                    : userData['gender'],
+                    : userData['cinsiyet'],
                 style: TextStyle(fontSize: 16),
               ),
             ],
@@ -171,18 +171,16 @@ class _InfoPageState extends State<InfoPage> {
   }
 
   void calculateBMR() {
-    int age = userData['age'];
-    double weight = userData['weight'];
-    double height = userData['height'];
-    String gender = userData['gender'];
+    int age = userData['yas'];
+    double weight = userData['kilo'];
+    double height = userData['boy'];
+    String gender = userData['cinsiyet'];
 
-    // Cinsiyete göre BMR formülünü uygula
     if (gender == 'Erkek') {
-      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-    } else if (gender == 'Kadın') {
-      bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+      bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+    } else if (gender == 'Kadin') {
+      bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
     } else {
-      // Cinsiyet belirtilmemişse bir hata durumu olabilir
       print("Hata: Cinsiyet belirtilmemiş.");
       bmr = 0.0;
     }
@@ -220,7 +218,7 @@ class _InfoPageState extends State<InfoPage> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, 'Kadın'); // 'Kadın' cinsiyeti seçildi
+                Navigator.pop(context, 'Kadin'); // 'Kadın' cinsiyeti seçildi
               },
               child: Text('Kadın'),
             ),
@@ -230,7 +228,7 @@ class _InfoPageState extends State<InfoPage> {
     );
 
     if (result != null) {
-      userData['gender'] = result;
+      userData['cinsiyet'] = result;
       setState(() {});
     }
   }

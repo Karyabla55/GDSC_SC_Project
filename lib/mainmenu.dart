@@ -1,3 +1,4 @@
+import 'package:GDSC_SC_Project/InfoPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/background.jpg'),
+            image: AssetImage('assets/resimler/BackgroundMainMenu.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -66,9 +67,41 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Ana Menü'),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
+        child: Column(
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: InkWell(
+                onTap: () {
+                  // "Ayşe/Ali" yazısına tıklandığında yapılacak işlemler
+                  print('Ayşe/Ali yazısına tıklandı.');
+                  Navigator.pop(context); // Yan menüyü kapat
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InfoPage()),
+                  );
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage("assets/erkek.jpg"),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Ayşe/Ali',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profil'),
@@ -91,56 +124,59 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _showBottomSheet() {
-    _scaffoldKey.currentState!.showBottomSheet((context) {
-      return Container(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              '${_selectedCalorie} kalori',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
-            ),
-            SizedBox(height: 16),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: _foods.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    _getKg(context, _foods[index]['name']);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Text(
-                      _foods[index]['name'],
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
+    _scaffoldKey.currentState!
+        .showBottomSheet((context) {
+          return Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  '${_selectedCalorie} kalori',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
                   ),
-                );
-              },
+                ),
+                SizedBox(height: 16),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _foods.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        _getKg(context, _foods[index]['name']);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          _foods[index]['name'],
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
-      );
-    }).closed.then((value) {
-      setState(() {
-        _selectedCalorie = 0;
-      });
-    });
+          );
+        })
+        .closed
+        .then((value) {
+          setState(() {
+            _selectedCalorie = 0;
+          });
+        });
   }
 
   void _getKg(BuildContext context, String foodName) {
@@ -179,7 +215,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void _calculateCalorie(double kg, String foodName) {
     setState(() {
       if (kg > 0) {
-        _selectedCalorie = (kg * _foods.firstWhere((food) => food['name'] == foodName)['calorie']).toInt();
+        _selectedCalorie = (kg *
+                _foods
+                    .firstWhere((food) => food['name'] == foodName)['calorie'])
+            .toInt();
       }
     });
   }
