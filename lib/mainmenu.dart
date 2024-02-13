@@ -1,7 +1,7 @@
 // mainmenu.dart
 
 import 'package:flutter/material.dart';
-import 'info.dart'; // info.dart dosyasını ekleyin
+import 'InfoPage.dart'; // info.dart dosyasını ekleyin
 
 void main() {
   runApp(MainMenu());
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                   Navigator.pop(context); // Yan menüyü kapat
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EmptyPage()),
+                    MaterialPageRoute(builder: (context) => InfoPage()),
                   );
                 },
                 child: Column(

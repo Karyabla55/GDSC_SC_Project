@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'fotodegis.dart';
 
-class EmptyPage extends StatefulWidget {
+class InfoPage extends StatefulWidget {
   @override
-  _EmptyPageState createState() => _EmptyPageState();
+  _InfoPageState createState() => _InfoPageState();
 }
 
-class _EmptyPageState extends State<EmptyPage> {
+class _InfoPageState extends State<InfoPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController weightController = TextEditingController();
@@ -49,7 +49,8 @@ class _EmptyPageState extends State<EmptyPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => FotoDegisScreen()),
+                            MaterialPageRoute(
+                                builder: (context) => FotoDegisScreen()),
                           );
                         },
                         child: Container(
@@ -157,7 +158,9 @@ class _EmptyPageState extends State<EmptyPage> {
                 ),
               ),
               Text(
-                userData['gender'].isEmpty ? 'Belirtilmemiş' : userData['gender'],
+                userData['gender'].isEmpty
+                    ? 'Belirtilmemiş'
+                    : userData['gender'],
                 style: TextStyle(fontSize: 16),
               ),
             ],
