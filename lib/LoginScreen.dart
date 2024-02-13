@@ -12,32 +12,49 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Giriş'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Kullanıcı Adı',
+
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/kayitolmenu.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 16),
+              const TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Kullanıcı Adı',
+                  labelStyle: TextStyle(color: Colors.white70),
+                ),
               ),
-            ),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Şifre',
+              const SizedBox(height: 16),
+              const TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Şifre',
+                  labelStyle: TextStyle(color: Colors.white70),
+                ),
+
+                obscureText: true,
               ),
-              obscureText: true,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => mm),
-                );
-              },
-              child: const Text('Giriş'),
-            ),
-          ],
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => mm),
+                  );
+                },
+
+                child: const Text('Giriş'),
+              ),
+            ],
+          ),
         ),
       ),
     );
