@@ -1,4 +1,7 @@
+// mainmenu.dart
+
 import 'package:flutter/material.dart';
+import 'info.dart'; // info.dart dosyasını ekleyin
 
 void main() {
   runApp(MainMenu());
@@ -32,11 +35,32 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text(
-                'Yan Menü',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+              child: InkWell(
+                onTap: () {
+                  // "Ayşe/Ali" yazısına tıklandığında yapılacak işlemler
+                  print('Ayşe/Ali yazısına tıklandı.');
+                  Navigator.pop(context); // Yan menüyü kapat
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EmptyPage()),
+                  );
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage("assets/erkek.jpg"),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Ayşe/Ali',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -97,7 +121,7 @@ class DiyetPage extends StatelessWidget {
             title: Text(
               'Kilo Alma',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20), // Boyutu 20 olarak ayarla
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               // Kilo Alma'ya tıklandığında yapılacak işlemler
@@ -109,7 +133,7 @@ class DiyetPage extends StatelessWidget {
             title: Text(
               'Kilo Verme',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20), // Boyutu 20 olarak ayarla
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               // Kilo Verme'ye tıklandığında yapılacak işlemler
@@ -121,7 +145,7 @@ class DiyetPage extends StatelessWidget {
             title: Text(
               'Kilo Koruma',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20), // Boyutu 20 olarak ayarla
+              style: TextStyle(fontSize: 20),
             ),
             onTap: () {
               // Kilo Koruma'ye tıklandığında yapılacak işlemler
