@@ -17,6 +17,7 @@ class _EmptyPageState extends State<EmptyPage> {
     'age': 0,
     'weight': 0.0,
     'height': 0.0,
+    'gender': '', // Cinsiyet bilgisini ekledik
   };
 
   double bmr = 0.0;
@@ -25,7 +26,7 @@ class _EmptyPageState extends State<EmptyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('                Bilgileriniz'),
+        title: Text('Bilgileriniz'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -71,6 +72,7 @@ class _EmptyPageState extends State<EmptyPage> {
                 _buildInputField("Yaş", ageController),
                 _buildInputField("Kilo", weightController),
                 _buildInputField("Boy", heightController),
+                _buildGenderField(), // Cinsiyet gösterilecek alan
                 ElevatedButton(
                   onPressed: () {
                     saveAndCalculateBMR();
@@ -131,30 +133,102 @@ class _EmptyPageState extends State<EmptyPage> {
     );
   }
 
-  void calculateBMR() {
-    int age = int.tryParse(userData['age'].toString()) ?? 0;
-    double weight = double.tryParse(userData['weight'].toString()) ?? 0.0;
-    double height = double.tryParse(userData['height'].toString()) ?? 0.0;
-
-    if (age != null && weight != null && height != null) {
-      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-      setState(() {});
-    }
+  Widget _buildGenderField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: InkWell(
+        onTap: () {
+          _showGenderSelection(); // Cinsiyet seçimi popup'ını göster
+        },
+        child: Container(
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Cinsiyet: ",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                userData['gender'].isEmpty ? 'Belirtilmemiş' : userData['gender'],
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
+  void calculateBMR() {
+    int age = userData['age'];
+    double weight = userData['weight'];
+    double height = userData['height'];
+    String gender = userData['gender'];
 
+    // Cinsiyete göre BMR formülünü uygula
+    if (gender == 'Erkek') {
+      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+    } else if (gender == 'Kadın') {
+      bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+    } else {
+      // Cinsiyet belirtilmemişse bir hata durumu olabilir
+      print("Hata: Cinsiyet belirtilmemiş.");
+      bmr = 0.0;
+    }
+
+    setState(() {});
+  }
 
   void saveAndCalculateBMR() {
     int age = int.tryParse(userData['age'].toString()) ?? 0;
     double weight = double.tryParse(userData['weight'].toString()) ?? 0.0;
     double height = double.tryParse(userData['height'].toString()) ?? 0.0;
 
-    print("Age: $age, Weight: $weight, Height: $height");
     userData['name'] = nameController.text;
     userData['age'] = age;
     userData['weight'] = weight;
     userData['height'] = height;
 
     calculateBMR();
+  }
+
+  Future<void> _showGenderSelection() async {
+    final result = await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Cinsiyet Seçimi'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context, 'Erkek'); // 'Erkek' cinsiyeti seçildi
+              },
+              child: Text('Erkek'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context, 'Kadın'); // 'Kadın' cinsiyeti seçildi
+              },
+              child: Text('Kadın'),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (result != null) {
+      userData['gender'] = result;
+      setState(() {});
+    }
   }
 }
