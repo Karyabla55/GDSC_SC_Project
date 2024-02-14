@@ -42,13 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/resimler/BackgroundMainMenu.png'),
+            image: AssetImage('assets/resimler/anamenu2.png'),
             fit: BoxFit.cover,
           ),
         ),
         child: Center(
           child: Text(
-            'Ana Menü',
+            '',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
@@ -64,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _scaffoldKey.currentState?.openDrawer();
           },
         ),
-        title: Text('Ana Menü'),
+        title: Text('Hoş Geldiniz'),
+        centerTitle: true,
       ),
       drawer: Drawer(
         child: Column(
@@ -101,13 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profil'),
-              onTap: () {
-                Navigator.pop(context);
-              },
             ),
             ListTile(
               leading: Icon(Icons.fastfood),

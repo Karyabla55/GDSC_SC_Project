@@ -10,7 +10,8 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('                    Giriş'),
+        centerTitle: true,
+        title: const Text('Giriş'),
       ),
 
       body: Container(
@@ -51,7 +52,13 @@ class LoginScreen extends StatelessWidget {
                   );
                 },
 
-                child: const Text('Giriş'),
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Kayıt',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
               ),
             ],
           ),

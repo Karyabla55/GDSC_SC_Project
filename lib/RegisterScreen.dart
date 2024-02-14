@@ -35,7 +35,8 @@ class RegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('             Kayıt Ekranı'),
+        centerTitle: true,
+        title: const Text('Kayıt Ekranı'),
         backgroundColor: Colors.white60,
       ),
       body: Container(
