@@ -5,5 +5,6 @@ class User {
   late int Age;
   late double Weight;
   late int Height;
+  late String Password;
   late int State;
 }

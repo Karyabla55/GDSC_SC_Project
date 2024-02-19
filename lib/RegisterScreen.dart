@@ -1,4 +1,5 @@
-import 'package:GDSC_SC_Project/mainmenu.dart';
+import 'package:GDSC_SC_Project/User.dart';
+import 'package:GDSC_SC_Project/MainMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,7 +25,7 @@ class RegisterScreen extends StatelessWidget {
 
 // ignore: must_be_immutable
 class RegistrationScreen extends StatelessWidget {
-  var mm = MainMenu();
+  MainMenu mm = new MainMenu();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -81,9 +82,10 @@ class RegistrationScreen extends StatelessWidget {
               SizedBox(height: 16),
               TextButton(
                 onPressed: () {
+                  CrateUser();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => mm),
+                    MaterialPageRoute(builder: (context) => mm.Run()),
                   );
                 },
                 style: ButtonStyle(
@@ -108,5 +110,12 @@ class RegistrationScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void CrateUser() {
+    User user = new User();
+    user.UserName = _usernameController.text;
+    user.Password = _passwordController.text;
+    user.Email = _emailController.text;
   }
 }

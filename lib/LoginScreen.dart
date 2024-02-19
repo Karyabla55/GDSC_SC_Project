@@ -1,4 +1,4 @@
-import 'package:GDSC_SC_Project/mainmenu.dart';
+import 'package:GDSC_SC_Project/MainMenu.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -13,7 +13,6 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text('Giriş'),
       ),
-
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -40,10 +39,8 @@ class LoginScreen extends StatelessWidget {
                   labelText: 'Şifre',
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
-
                 obscureText: true,
               ),
-
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -51,7 +48,6 @@ class LoginScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => mm),
                   );
                 },
-
                 child: Container(
                   padding: EdgeInsets.all(8.0),
                   child: Text(

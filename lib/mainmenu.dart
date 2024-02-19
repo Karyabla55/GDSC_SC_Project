@@ -1,7 +1,8 @@
 import 'package:GDSC_SC_Project/InfoPage.dart';
+import 'package:GDSC_SC_Project/User.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void run(User user) {
   runApp(MainMenu());
 }
 
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String Name = User().Name;
     return Scaffold(
       key: _scaffoldKey,
       body: Container(
@@ -76,8 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: InkWell(
                 onTap: () {
-                  // "Ayşe/Ali" yazısına tıklandığında yapılacak işlemler
-                  print('Ayşe/Ali yazısına tıklandı.');
                   Navigator.pop(context); // Yan menüyü kapat
                   Navigator.push(
                     context,
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Ayşe/Ali',
+                      '$Name',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
