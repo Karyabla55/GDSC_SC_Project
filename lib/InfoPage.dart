@@ -189,14 +189,14 @@ class _InfoPageState extends State<InfoPage> {
   }
 
   void saveAndCalculateBMR() {
-    int age = int.tryParse(userData['age'].toString()) ?? 0;
-    double weight = double.tryParse(userData['weight'].toString()) ?? 0.0;
-    double height = double.tryParse(userData['height'].toString()) ?? 0.0;
+    int age = int.tryParse(userData['yas'].toString()) ?? 0;
+    double weight = double.tryParse(userData['kilo'].toString()) ?? 0.0;
+    double height = double.tryParse(userData['boy'].toString()) ?? 0.0;
 
-    userData['name'] = nameController.text;
-    userData['age'] = age;
-    userData['weight'] = weight;
-    userData['height'] = height;
+    userData['isim'] = nameController.text;
+    userData['yas'] = age;
+    userData['kilo'] = weight;
+    userData['boy'] = height;
 
     calculateBMR();
   }
