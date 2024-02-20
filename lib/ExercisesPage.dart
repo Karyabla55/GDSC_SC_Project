@@ -19,7 +19,7 @@ class ExercisePage extends StatelessWidget {
         name: 'Yüzme (Orta Tempo)', caloriesBurned: User().Weight * 1 * 7.0),
     Exercise(
         name: "Ağırlık Antrenmanı (Orta Derece)",
-        caloriesBurned: User().Weight * 1 * 6.0)
+        caloriesBurned: User().Weight * 1 * 5.0)
     // Diğer egzersizleri buraya ekleyin
   ];
 
