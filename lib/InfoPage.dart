@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'fotodegis.dart';
+import 'User.dart';
 
 class InfoPage extends StatefulWidget {
   @override
@@ -13,12 +14,20 @@ class _InfoPageState extends State<InfoPage> {
   TextEditingController heightController = TextEditingController();
 
   Map<String, dynamic> userData = {
-    'isim': '',
-    'yas': 0,
-    'kilo': 0.0,
-    'boy': 0.0,
-    'cinsiyet': '',
+    'isim': User().Name,
+    'yas': User().Age,
+    'kilo': User().Weight,
+    'boy': User().Height,
+    'cinsiyet': User().Gender,
   };
+
+  void initState() {
+    super.initState();
+    nameController.text = userData['isim'] ?? '';
+    ageController.text = userData['yas']?.toString() ?? '';
+    weightController.text = userData['kilo']?.toString() ?? '';
+    heightController.text = userData['boy']?.toString() ?? '';
+  }
 
   double bmr = 0.0;
 
@@ -176,7 +185,7 @@ class _InfoPageState extends State<InfoPage> {
     double height = userData['boy'];
     String gender = userData['cinsiyet'];
 
-    if (gender == 'Erkek') {
+    if (gender == 'Male') {
       bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
     } else if (gender == 'Kadin') {
       bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
@@ -211,9 +220,9 @@ class _InfoPageState extends State<InfoPage> {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, 'Erkek'); // 'Erkek' cinsiyeti seçildi
+                Navigator.pop(context, 'Male'); // 'Erkek' cinsiyeti seçildi
               },
-              child: Text('Erkek'),
+              child: Text('Male'),
             ),
             SizedBox(height: 16),
             ElevatedButton(

@@ -1,9 +1,12 @@
 import 'package:GDSC_SC_Project/MainMenu.dart';
+import 'package:GDSC_SC_Project/User.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   var mm = MainMenu();
+  TextEditingController _UserNameController = TextEditingController();
+  TextEditingController _UserPasswordController = TextEditingController();
   LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -25,7 +28,8 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 16),
-              const TextField(
+              TextField(
+                controller: _UserNameController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Kullanıcı Adı',
@@ -33,7 +37,8 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              const TextField(
+              TextField(
+                controller: _UserPasswordController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Şifre',
@@ -43,15 +48,40 @@ class LoginScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => mm),
-                  );
+                  print(User().UserName);
+                  print(User().Password);
+                  print(_UserNameController);
+                  print(_UserPasswordController);
+                  if (_UserNameController.text == User().UserName &&
+                      _UserPasswordController.text == User().Password) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => mm),
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Hata'),
+                          content: Text('Girdiğiniz bilgiler hatalıdır.'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(); // Uyarıyı kapat
+                              },
+                              child: Text('Tamam'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 },
                 child: Container(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Kayıt',
+                    'Giriş Yap',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),

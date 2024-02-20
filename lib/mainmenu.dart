@@ -2,7 +2,7 @@ import 'package:GDSC_SC_Project/InfoPage.dart';
 import 'package:GDSC_SC_Project/User.dart';
 import 'package:flutter/material.dart';
 
-void run(User user) {
+void main() {
   runApp(MainMenu());
 }
 
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: Center(
           child: Text(
-            '',
+            'asdfasfasasdf',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,

@@ -25,7 +25,7 @@ class RegisterScreen extends StatelessWidget {
 
 // ignore: must_be_immutable
 class RegistrationScreen extends StatelessWidget {
-  MainMenu mm = new MainMenu();
+  var mm = MainMenu();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -85,7 +85,7 @@ class RegistrationScreen extends StatelessWidget {
                   CrateUser();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => mm.Run()),
+                    MaterialPageRoute(builder: (context) => mm),
                   );
                 },
                 style: ButtonStyle(
