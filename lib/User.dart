@@ -1,11 +1,11 @@
 class User {
-  String Email = "s.abdusselam@gmail.com";
-  String UserName = "Malessudba";
-  String Name = "Sadık Abdusselam Albayrak";
-  int Age = 20;
-  double Weight = 90.0;
-  int Height = 169;
-  String Password = "1234";
-  String Gender = "Male";
-  int State = 0;
+  late String Email = "";
+  late String UserName = "emyee";
+  late String Name = "Mehmet Emre Başaran";
+  late int Age = 20;
+  late double Weight = 120;
+  late int Height = 190;
+  late String Password = "asdf";
+  late String Gender = "Male";
+  late int State = 0;
 }

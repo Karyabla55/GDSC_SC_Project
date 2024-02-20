@@ -113,9 +113,13 @@ class RegistrationScreen extends StatelessWidget {
   }
 
   void CrateUser() {
-    User user = new User();
-    user.UserName = _usernameController.text;
-    user.Password = _passwordController.text;
-    user.Email = _emailController.text;
+    User().UserName = _usernameController.text;
+    User().Password = _passwordController.text;
+    User().Email = _emailController.text;
+    User().Age = 0;
+    User().Name = " ";
+    User().Gender = " ";
+    User().Weight = 0;
+    User().Height = 0;
   }
 }

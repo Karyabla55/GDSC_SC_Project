@@ -182,7 +182,7 @@ class _InfoPageState extends State<InfoPage> {
   void calculateBMR() {
     int age = userData['yas'];
     double weight = userData['kilo'];
-    double height = userData['boy'];
+    int height = userData['boy'];
     String gender = userData['cinsiyet'];
 
     if (gender == 'Male') {
@@ -200,12 +200,16 @@ class _InfoPageState extends State<InfoPage> {
   void saveAndCalculateBMR() {
     int age = int.tryParse(userData['yas'].toString()) ?? 0;
     double weight = double.tryParse(userData['kilo'].toString()) ?? 0.0;
-    double height = double.tryParse(userData['boy'].toString()) ?? 0.0;
+    int height = int.tryParse(userData['boy'].toString()) ?? 0;
 
     userData['isim'] = nameController.text;
+    User().Name = nameController.text;
     userData['yas'] = age;
+    User().Age = age;
     userData['kilo'] = weight;
+    User().Weight = weight;
     userData['boy'] = height;
+    User().Height = height;
 
     calculateBMR();
   }

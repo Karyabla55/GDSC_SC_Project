@@ -33,7 +33,8 @@ class LoginScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Kullanıcı Adı',
-                  labelStyle: TextStyle(color: Colors.white70),
+                  labelStyle: TextStyle(
+                      color: const Color.fromARGB(255, 255, 255, 255)),
                 ),
               ),
               const SizedBox(height: 16),
@@ -42,7 +43,8 @@ class LoginScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Şifre',
-                  labelStyle: TextStyle(color: Colors.white70),
+                  labelStyle:
+                      TextStyle(color: Color.fromARGB(255, 253, 253, 253)),
                 ),
                 obscureText: true,
               ),
@@ -64,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: Text('Hata'),
-                          content: Text('Girdiğiniz bilgiler hatalıdır.'),
+                          content: Text('Girdiğiniz bilgiler hatalidir.'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
@@ -82,7 +84,8 @@ class LoginScreen extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text(
                     'Giriş Yap',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255)),
                   ),
                 ),
               ),

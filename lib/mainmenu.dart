@@ -1,3 +1,4 @@
+import 'package:GDSC_SC_Project/ExercisesPage.dart';
 import 'package:GDSC_SC_Project/InfoPage.dart';
 import 'package:GDSC_SC_Project/User.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
     {'name': 'Çikolata', 'calorie': 546},
   ];
 
+  double weight = User().Weight;
+
   int _selectedCalorie = 0;
 
   @override
@@ -49,14 +52,50 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         child: Center(
-          child: Text(
-            'asdfasfasasdf',
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(height: 220),
+            Text(
+              'Şu Anki Kilonuz: $weight',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-          ),
+            SizedBox(height: 280),
+            ElevatedButton(
+              onPressed: () {
+                // Navigator ile yeni sayfaya geçiş yapma
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionDuration:
+                        Duration(milliseconds: 500), // Geçiş süresi
+                    transitionsBuilder: (BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secAnimation,
+                        Widget child) {
+                      // Sayfanın aşağıdan yukarı kayması için AlignTransition kullanılır
+                      return AlignTransition(
+                        alignment: Tween<Alignment>(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.center,
+                        ).animate(animation),
+                        child: child,
+                      );
+                    },
+                    pageBuilder: (BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secAnimation) {
+                      // Açılacak olan sayfa burada belirtilir
+                      return ExercisePage();
+                    },
+                  ),
+                );
+              },
+              child: Text('Egzersizler'),
+            ),
+          ]),
         ),
       ),
       appBar: AppBar(
