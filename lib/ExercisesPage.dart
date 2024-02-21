@@ -10,15 +10,16 @@ class Exercise {
 
 class ExercisePage extends StatelessWidget {
   final List<Exercise> exercises = [
-    Exercise(name: 'Koşu (8km/h)', caloriesBurned: User().Weight * 1 * 8.0),
+    Exercise(name: 'Running (8km/h)', caloriesBurned: User().Weight * 1 * 8.0),
     Exercise(
-        name: 'Yürüyüş (Orta Tempo)', caloriesBurned: User().Weight * 1 * 3.5),
+        name: 'Walk (Medium Tempo)', caloriesBurned: User().Weight * 1 * 3.5),
     Exercise(
-        name: 'Bisiklet (Orta Tempo)', caloriesBurned: User().Weight * 1 * 6.0),
+        name: 'Cycling (Medium Pace)', caloriesBurned: User().Weight * 1 * 6.0),
     Exercise(
-        name: 'Yüzme (Orta Tempo)', caloriesBurned: User().Weight * 1 * 7.0),
+        name: 'Swimming (Medium Pace)',
+        caloriesBurned: User().Weight * 1 * 7.0),
     Exercise(
-        name: "Ağırlık Antrenmanı (Orta Derece)",
+        name: "Weight Training (Moderate)",
         caloriesBurned: User().Weight * 1 * 5.0)
     // Diğer egzersizleri buraya ekleyin
   ];
@@ -27,7 +28,7 @@ class ExercisePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Egzersizler'),
+        title: Text('Exercices'),
       ),
       body: Container(
         color: Colors.grey[200], // Arka plan rengi
@@ -36,7 +37,7 @@ class ExercisePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Egzersizler Listesi \n(Ortalama 1 Saat)',
+              'Exercises List \n(Average 1 Hour)',
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
@@ -58,7 +59,8 @@ class ExercisePage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text('${exercise.caloriesBurned} kalori'),
+                    subtitle:
+                        Text('Burned Calorie ${exercise.caloriesBurned}cal '),
                     onTap: () {
                       // Egzersize tıklandığında yapılacak işlemler
                       // Örneğin: Egzersiz detaylarını gösteren bir sayfaya yönlendirme

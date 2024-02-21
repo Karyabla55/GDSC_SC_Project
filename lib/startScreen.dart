@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('                         Giriş Ekranı'),
+        title: Text('                 To a healthy life'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -51,7 +51,7 @@ class LoginPage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => rs),
                   );
                 },
-                child: Text(' Kayıt Ol '),
+                child: Text(' Register '),
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => ls),
                   );
                 },
-                child: Text(' Giriş Yap '),
+                child: Text(' Log In '),
               ),
               SizedBox(height: 40.0),
             ],
@@ -77,7 +77,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kayıt Ekranı'),
+        title: Text('Register'),
       ),
       body: Center(
         child: Column(
@@ -87,7 +87,7 @@ class RegisterPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context); // Giriş ekranına geri dön
               },
-              child: Text('Geri Dön'),
+              child: Text('Go back'),
             ),
           ],
         ),

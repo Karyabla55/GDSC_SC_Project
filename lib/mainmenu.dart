@@ -29,10 +29,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<Map<String, dynamic>> _foods = [
-    {'name': 'Elma', 'calorie': 52},
-    {'name': 'Armut', 'calorie': 57},
-    {'name': 'Cips', 'calorie': 536},
-    {'name': 'Çikolata', 'calorie': 546},
+    {'name': 'Apple', 'calorie': 52},
+    {'name': 'Pear', 'calorie': 57},
+    {'name': 'Chips', 'calorie': 536},
+    {'name': 'Chocolate', 'calorie': 546},
+    {'name': 'Bread', 'calorie': 264},
   ];
 
   double weight = User().Weight;
@@ -55,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             SizedBox(height: 220),
             Text(
-              'Şu Anki Kilonuz: $weight',
+              'Your current weight: $weight',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
@@ -93,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: Text('Egzersizler'),
+              child: Text('Exercises'),
             ),
           ]),
         ),
@@ -105,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _scaffoldKey.currentState?.openDrawer();
           },
         ),
-        title: Text('Hoş Geldiniz'),
+        title: Text('Welcome'),
         centerTitle: true,
       ),
       drawer: Drawer(
@@ -132,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      '$Name',
+                      'User Name:${Name}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -144,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.fastfood),
-              title: Text('Hangi yemek kaç kalori'),
+              title: Text('Which food has how many calories?'),
               onTap: () {
                 Navigator.pop(context);
                 _showBottomSheet();
@@ -165,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  '${_selectedCalorie} kalori',
+                  '${_selectedCalorie} Calorie',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -218,25 +219,25 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Yemek Miktarı (kg)'),
+          title: Text('How many'),
           content: TextField(
             controller: _kgController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(hintText: 'Kilogram cinsinden giriniz'),
+            decoration: InputDecoration(hintText: 'enter quantity'),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('İptal'),
+              child: Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Onayla'),
+              child: Text('Approve'),
               onPressed: () {
-                double kg = double.tryParse(_kgController.text) ?? 0;
+                int quantity = int.tryParse(_kgController.text) ?? 0;
                 Navigator.of(context).pop();
-                _calculateCalorie(kg, foodName);
+                _calculateCalorie(quantity, foodName);
               },
             ),
           ],
@@ -245,10 +246,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _calculateCalorie(double kg, String foodName) {
+  void _calculateCalorie(int quantity, String foodName) {
     setState(() {
-      if (kg > 0) {
-        _selectedCalorie = (kg *
+      if (quantity > 0) {
+        _selectedCalorie = (quantity *
                 _foods
                     .firstWhere((food) => food['name'] == foodName)['calorie'])
             .toInt();

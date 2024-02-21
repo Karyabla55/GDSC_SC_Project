@@ -88,7 +88,7 @@ class _InfoPageState extends State<InfoPage> {
                   onPressed: () {
                     saveAndCalculateBMR();
                   },
-                  child: Text('Kaydet'),
+                  child: Text('Save'),
                 ),
               ],
             ),
@@ -160,7 +160,7 @@ class _InfoPageState extends State<InfoPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Cinsiyet: ",
+                "Gender: ",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -168,7 +168,7 @@ class _InfoPageState extends State<InfoPage> {
               ),
               Text(
                 userData['cinsiyet'].isEmpty
-                    ? 'Belirtilmemiş'
+                    ? 'Undefined'
                     : userData['cinsiyet'],
                 style: TextStyle(fontSize: 16),
               ),
@@ -187,10 +187,10 @@ class _InfoPageState extends State<InfoPage> {
 
     if (gender == 'Male') {
       bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-    } else if (gender == 'Kadin') {
+    } else if (gender == 'Woman') {
       bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
     } else {
-      print("Hata: Cinsiyet belirtilmemiş.");
+      print("Error: Undefined.");
       bmr = 0.0;
     }
 
@@ -231,9 +231,9 @@ class _InfoPageState extends State<InfoPage> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, 'Kadin'); // 'Kadın' cinsiyeti seçildi
+                Navigator.pop(context, 'Woman'); // 'Kadın' cinsiyeti seçildi
               },
-              child: Text('Kadın'),
+              child: Text('Woman'),
             ),
           ],
         ),

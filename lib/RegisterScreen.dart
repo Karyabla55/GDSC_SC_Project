@@ -37,7 +37,7 @@ class RegistrationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Kayıt Ekranı'),
+        title: const Text('Register'),
         backgroundColor: Colors.white60,
       ),
       body: Container(
@@ -56,7 +56,7 @@ class RegistrationScreen extends StatelessWidget {
                 controller: _usernameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Kullanıcı Adı',
+                  labelText: 'Username',
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
               ),
@@ -65,7 +65,7 @@ class RegistrationScreen extends StatelessWidget {
                 controller: _passwordController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Şifre',
+                  labelText: 'Password',
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
                 obscureText: true,
@@ -75,7 +75,7 @@ class RegistrationScreen extends StatelessWidget {
                 controller: _emailController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Email',
+                  labelText: 'E-mail',
                   labelStyle: TextStyle(color: Colors.white70),
                 ),
               ),
@@ -100,7 +100,7 @@ class RegistrationScreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Kayıt',
+                    'Register',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
